@@ -6,6 +6,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Product } from './product';
+import { PRODUCTS } from './mock-products';
 
 @Injectable()
 export class ProductsService {
@@ -15,7 +16,8 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   getProducts (): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsUrl);
+    //return this.http.get<Product[]>(this.productsUrl);
+    return of(PRODUCTS);
   }
 
 }
