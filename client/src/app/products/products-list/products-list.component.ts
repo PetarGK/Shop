@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router'; 
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
 
@@ -12,7 +12,7 @@ import { ProductsService } from '../products.service';
 export class ProductsListComponent implements OnInit {
   products: Product[];
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService, private router: Router) { }
 
   ngOnInit() {
     this.getProducts()
@@ -24,7 +24,12 @@ export class ProductsListComponent implements OnInit {
   }  
 
   onEditProduct(event): void {
-    alert('edit product');
+    this.router.navigate([
+      { 
+        path: 'products/details',
+        outlets: { productPopup: [ 'details', 1 ] }
+      }
+    ]); 
   }
 
 }

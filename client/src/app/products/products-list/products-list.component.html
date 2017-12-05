@@ -2,3 +2,4 @@
 <ul class="products">
     <product *ngFor="let p of products" [product]="p" (editProduct)="onEditProduct($event)"></product>
 </ul>
+<router-outlet name="productPopup"></router-outlet> 
