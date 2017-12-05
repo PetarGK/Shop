@@ -23,4 +23,8 @@ export class ProductsListComponent implements OnInit {
     .subscribe(products => this.products = products);
   }  
 
+  onEditProduct(event): void {
+    alert('edit product');
+  }
+
 }
