@@ -16,7 +16,8 @@ module.exports.handler = (event, context, callback) => {
             products.saveProduct(product, callback);
             break;
 
-        case 'PUT /products':                
+        case 'PUT /products':       
+            const productId = event.pathParameters.productId;         
             const product = JSON.parse(event.body);
             products.updateProduct(productId, product, callback);
             break;            

@@ -23,3 +23,7 @@ functions:
       - http: GET products   
       - http: POST products 
       - http: PUT products
+        request: 
+          parameters: 
+             paths: 
+               productId: true      
