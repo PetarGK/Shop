@@ -11,6 +11,16 @@ module.exports.handler = (event, context, callback) => {
             products.retrieveAll(callback);
             break;
 
+        case 'POST /products':                
+            const product = JSON.parse(event.body);
+            products.saveProduct(product, callback);
+            break;
+
+        case 'PUT /products':                
+            const product = JSON.parse(event.body);
+            products.updateProduct(productId, product, callback);
+            break;            
+
         default:
             utils.notFoundHandler(callback);
     }
