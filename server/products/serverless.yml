@@ -22,8 +22,14 @@ functions:
     events:
       - http: GET products   
       - http: POST products 
-      - http: PUT products
+      - http: PUT products/{productId}
         request: 
           parameters: 
              paths: 
-               productId: true      
+               productId: true   
+      - http: DELETE products/{productId}
+        request: 
+          parameters: 
+             paths: 
+               productId: true                   
+      

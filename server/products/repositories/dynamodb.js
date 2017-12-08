@@ -42,11 +42,11 @@ module.exports.saveProduct = (product, callback) => {
 };
 
 module.exports.updateProduct = (productId, product, callback) => {
-    /*
+    
     const params = {
         TableName: "Products",
         Item: {
-            ID: product.id,
+            ID: productId,
             Name: product.name,
             Description: product.description,
             Price: product.price
@@ -54,5 +54,16 @@ module.exports.updateProduct = (productId, product, callback) => {
     };
 
     documentClient.put(params, callback);
-    */
+};
+
+module.exports.deleteProduct = (productId, callback) => {
+    
+    const params = {
+        TableName: "Products",
+        Key: {
+            ID: productId
+        }
+    };
+
+    documentClient.delete(params, callback);
 };

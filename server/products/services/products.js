@@ -22,3 +22,11 @@ module.exports.updateProduct = (productId, product, callback) => {
         else utils.successHandler(res, callback);
     });
 };
+
+module.exports.deleteProduct = (productId, callback) => {
+    db.deleteProduct(productId, (err, res) => {
+        if (err) utils.errorHandler(err, callback);
+        else utils.successHandler(res, callback);
+    });
+};
+

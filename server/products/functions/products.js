@@ -12,15 +12,20 @@ module.exports.handler = (event, context, callback) => {
             break;
 
         case 'POST /products':                
-            const product = JSON.parse(event.body);
-            products.saveProduct(product, callback);
+            const createProduct = JSON.parse(event.body);
+            products.saveProduct(createProduct, callback);
             break;
 
-        case 'PUT /products':       
-            const productId = event.pathParameters.productId;         
-            const product = JSON.parse(event.body);
-            products.updateProduct(productId, product, callback);
-            break;            
+        case 'PUT /products/{productId}':       
+            const updateProductId = event.pathParameters.productId;         
+            const updateProduct = JSON.parse(event.body);
+            products.updateProduct(updateProductId, updateProduct, callback);
+            break;        
+            
+        case 'DELETE /products/{productId}':       
+            const deleteProductId = event.pathParameters.productId;         
+            products.deleteProduct(deleteProductId, callback);
+            break;                
 
         default:
             utils.notFoundHandler(callback);
