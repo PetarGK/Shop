@@ -1,4 +1,7 @@
 service: products
+custom:
+  awsAccountId: 271522064567  
+  cognitoAuthorizer: arn:aws:cognito-idp:us-east-1:${self:custom.awsAccountId}:userpool/us-east-1_PmnLooJjR
 provider:
   name: aws
   runtime: nodejs6.10
@@ -20,16 +23,31 @@ functions:
   products:
     handler: functions/products.handler
     events:
-      - http: GET products   
-      - http: POST products 
-      - http: PUT products/{productId}
-        request: 
-          parameters: 
-             paths: 
-               productId: true   
-      - http: DELETE products/{productId}
-        request: 
-          parameters: 
-             paths: 
-               productId: true                   
+      - http: get products  
+      - http: 
+          path: products
+          method: post
+          integration: lambda
+          authorizer:
+            arn: ${self:custom.cognitoAuthorizer}                
+      - http:  
+          path: products/{productId}
+          method: put                    
+          request: 
+            parameters: 
+              paths: 
+                productId: true  
+          integration: lambda       
+          authorizer: 
+            arn: ${self:custom.cognitoAuthorizer} 
+      - http: 
+          path: products/{productId}
+          method: delete           
+          request: 
+            parameters: 
+              paths: 
+                productId: true   
+          integration: lambda                
+          authorizer: 
+            arn: ${self:custom.cognitoAuthorizer}                                
       
