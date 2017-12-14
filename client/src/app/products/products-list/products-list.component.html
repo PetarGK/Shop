@@ -1,4 +1,7 @@
 <h2>My Products</h2>
+
+<product-details></product-details>
+
 <ul class="products">
     <product *ngFor="let p of products" [product]="p" (editProduct)="onEditProduct($event)"></product>
 </ul>

@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
+import { ProductsState } from '../products.state';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../core/store/app.state';
+import * as ProductsActions from '../products.actions';
 
 @Component({
   selector: 'app-products-list',
@@ -10,26 +16,17 @@ import { ProductsService } from '../products.service';
 })
 
 export class ProductsListComponent implements OnInit {
-  products: Product[];
+  public productsState$: Observable<ProductsState>;
 
-  constructor(private productsService: ProductsService, private router: Router) { }
+  constructor(private store: Store<AppState>) {
+    this.productsState$ = this.store.select('products').share();
+  }
 
   ngOnInit() {
-    this.getProducts()
+    this.store.dispatch(new ProductsActions.GetProducts());
   }
-
-  getProducts(): void {
-    this.productsService.getProducts()
-    .subscribe(products => this.products = products);
-  }  
 
   onEditProduct(event): void {
-    this.router.navigate([
-      { 
-        path: 'products/details',
-        outlets: { productPopup: [ 'details', 1 ] }
-      }
-    ]); 
-  }
 
+  }
 }
