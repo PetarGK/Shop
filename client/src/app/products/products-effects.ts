@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect } from '@ngrx/effects';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
 import { ProductsService } from "./products.service";
 import { Store } from "@ngrx/store";
 import { AppState } from "../core/store/app.state";
