@@ -3,6 +3,6 @@
 <product-details></product-details>
 
 <ul class="products">
-    <product *ngFor="let p of products" [product]="p" (editProduct)="onEditProduct($event)"></product>
+    <product *ngFor="let p of (productsState$ | async)?.products" [product]="p" (editProduct)="onEditProduct($event)"></product>
 </ul>
 <router-outlet name="productPopup"></router-outlet> 
