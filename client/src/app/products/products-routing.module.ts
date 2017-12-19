@@ -3,12 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 
-const routes: Routes = [
-  {
-    path: 'details/:product-id',
-    component: ProductDetailsComponent,
-    outlet: 'productPopup'
-  },  
+const routes: Routes = [ 
   {
     path: '',
     component: ProductsListComponent
