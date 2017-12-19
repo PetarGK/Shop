@@ -1,7 +1,7 @@
 import { ProductsState } from './products.state';
 import * as Products from './products.actions';
 
-let initialState = {
+const initialState = {
     products: null
 };
 
@@ -10,7 +10,7 @@ export function products(state: ProductsState = initialState, action: Products.A
         case Products.GET_PRODUCTS:
             return { ...state };
         case Products.GET_PRODUCTS_SUCCESS:
-            return { ...state, products: action.payload };            
+            return { ...state, products: action.payload };
         default:
             return state;
     }
