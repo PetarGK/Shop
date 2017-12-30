@@ -1,5 +1,5 @@
-import { Product } from "./product";
+import { Product } from './product';
 
 export interface ProductsState {
-    products: Product[]
+    products: Product[];
 }

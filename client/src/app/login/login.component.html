@@ -1,0 +1,10 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)" novalidate>
+    <div>
+       <label for="userName">Username:</label>
+       <input type="text" id="userName" placeholder="Enter username" name="userName" ngModel>
+  
+       <label for="password">Password:</label>
+       <input type="password" id="password" placeholder="Enter password" name="password" ngModel>
+    </div>
+    <button type="submit">Login</button>
+</form>

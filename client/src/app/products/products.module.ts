@@ -17,7 +17,7 @@ import { products } from './products.reducer';
     CommonModule,
     ProductsRoutingModule,
     StoreModule.forFeature('products', products),
-    EffectsModule.forFeature([ProductsEffects])    
+    EffectsModule.forFeature([ProductsEffects])
   ],
   declarations: [ProductsListComponent, ProductComponent, ProductDetailsComponent],
   providers: [ProductsService]

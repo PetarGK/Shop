@@ -14,6 +14,6 @@ export class GetProductsSuccess implements Action {
     }
 }
 
-export type All = 
-    GetProducts | 
+export type All =
+    GetProducts |
     GetProductsSuccess;

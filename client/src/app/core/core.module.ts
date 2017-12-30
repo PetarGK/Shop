@@ -1,10 +1,12 @@
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CognitoService } from './cognito.service';
 
 @NgModule({
   imports: [
     CommonModule
-  ]
+  ],
+  providers: [CognitoService]
 })
 
 export class CoreModule {
