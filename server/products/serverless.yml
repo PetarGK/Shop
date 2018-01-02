@@ -24,7 +24,10 @@ provider:
       ]
 functions:
   products:
-    handler: functions/get.get
+    handler: handlers.products
     events:
       - http: get products  
+      - http: 
+         path: products
+         method: post       
       
