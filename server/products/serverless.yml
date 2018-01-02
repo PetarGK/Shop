@@ -1,4 +1,7 @@
 service: products
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
 custom:
   awsAccountId: 271522064567  
   cognitoAuthorizer: arn:aws:cognito-idp:us-east-1:${self:custom.awsAccountId}:userpool/us-east-1_PmnLooJjR
@@ -21,33 +24,7 @@ provider:
       ]
 functions:
   products:
-    handler: functions/products.handler
+    handler: functions/get.get
     events:
       - http: get products  
-      - http: 
-          path: products
-          method: post
-          integration: lambda
-          authorizer:
-            arn: ${self:custom.cognitoAuthorizer}                
-      - http:  
-          path: products/{productId}
-          method: put                    
-          request: 
-            parameters: 
-              paths: 
-                productId: true  
-          integration: lambda       
-          authorizer: 
-            arn: ${self:custom.cognitoAuthorizer} 
-      - http: 
-          path: products/{productId}
-          method: delete           
-          request: 
-            parameters: 
-              paths: 
-                productId: true   
-          integration: lambda                
-          authorizer: 
-            arn: ${self:custom.cognitoAuthorizer}                                
       
