@@ -26,8 +26,22 @@ functions:
   products:
     handler: handlers.products
     events:
-      - http: get products  
       - http: 
          path: products
-         method: post       
+         method: get  
+         integration: lambda
+         authorizer:
+            name: authorizer
+            arn: ${self:custom.cognitoAuthorizer}  
+            claims:
+              - email        
+      - http: 
+         path: products
+         method: post  
+         integration: lambda
+         authorizer:
+            name: authorizer
+            arn: ${self:custom.cognitoAuthorizer}  
+            claims:
+              - email                           
       

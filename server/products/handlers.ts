@@ -6,7 +6,7 @@ const dynamoDb = new DynamoDB.DocumentClient()
 
 module.exports.products = (event, context, callback) => {
 
-  switch (`$(event.httpMethod) $(event.resource)`) {
+  switch (`${event.httpMethod} ${event.resource}`) {
     case 'GET /products':
       const params1 = {
         TableName: 'Products'
