@@ -29,19 +29,13 @@ functions:
       - http: 
          path: products
          method: get  
-         integration: lambda
          authorizer:
             name: authorizer
-            arn: ${self:custom.cognitoAuthorizer}  
-            claims:
-              - email        
+            arn: ${self:custom.cognitoAuthorizer}        
       - http: 
          path: products
          method: post  
-         integration: lambda
          authorizer:
             name: authorizer
-            arn: ${self:custom.cognitoAuthorizer}  
-            claims:
-              - email                           
+            arn: ${self:custom.cognitoAuthorizer}                            
       

@@ -8,6 +8,8 @@ module.exports.products = (event, context, callback) => {
 
   switch (`${event.httpMethod} ${event.resource}`) {
     case 'GET /products':
+
+      console.log('start - get products request')
       const params1 = {
         TableName: 'Products'
       }
@@ -31,8 +33,10 @@ module.exports.products = (event, context, callback) => {
           statusCode: 200,
           body: JSON.stringify(products)
         }
+        console.log('before to return results - get products request')
         callback(null, response)
       })
+      console.log('end - get products request')
       break
     case 'POST /products':
       const product = JSON.parse(event.body)
