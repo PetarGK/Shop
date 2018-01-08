@@ -7,6 +7,7 @@ import { CognitoService } from '../core/cognito.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../core/store/app.state';
 import * as LoginActions from './login.actions';
+import * as RouterActions from '../core/store/router.actions';
 import { Observable } from 'rxjs/Observable';
 import { CognitoResult } from '../core/cognito.result';
 
@@ -27,5 +28,8 @@ loginUser$ = this.actions$.ofType<LoginActions.LoginUser>(LoginActions.LOGIN_USE
                             } else if (result.error) {
                                 return new LoginActions.LoginUserError(result.error);
                             }
+                          })
+                          .map(_ => {
+                            return new RouterActions.Go({ path: ['/products'] });
                           });
 }
