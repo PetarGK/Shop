@@ -6,6 +6,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Product } from './product';
+import { environment } from '../../environments/environment';
 import { PRODUCTS } from './mock-products';
 
 @Injectable()
@@ -17,7 +18,9 @@ export class ProductsService {
 
   getProducts (): Observable<Product[]> {
     // return this.http.get<Product[]>(this.productsUrl);
-    return of(PRODUCTS);
+    // return of(PRODUCTS);
+
+    return this.http.get<Product[]>(`https://${environment.apiPath}/${environment.env}/products`);
   }
 
 }

@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CognitoService } from './cognito.service';
 import { AuthService } from '../core/auth.service';
 import { AuthGuardService } from '../core/auth-guard.service';
+import { TokenInterceptor } from '../core/token-interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -19,7 +21,12 @@ import { AuthGuardService } from '../core/auth-guard.service';
       }
     })
   ],
-  providers: [CognitoService, AuthService, AuthGuardService, JwtHelperService]
+  providers: [CognitoService, AuthService, AuthGuardService, JwtHelperService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }]
 })
 
 export class CoreModule {

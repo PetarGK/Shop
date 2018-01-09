@@ -6,6 +6,10 @@ export class AuthService {
 
   constructor(public jwtHelper: JwtHelperService) { }
 
+  public getToken(): string {
+    return localStorage.getItem('CognitoIdentityServiceProvider.ocuosoj46qe7ami0b5pjp4ian.petark.idToken');
+  }
+
   public isAuthenticated(): boolean {
 
     const token = localStorage.getItem('CognitoIdentityServiceProvider.ocuosoj46qe7ami0b5pjp4ian.petark.idToken');
