@@ -32,14 +32,12 @@ functions:
       - http: 
          path: products
          method: get  
-         cors: true
          authorizer:
             name: authorizer
             arn: ${self:custom.cognitoAuthorizer}        
       - http: 
          path: products
          method: post  
-         cors: true
          authorizer:
             name: authorizer
             arn: ${self:custom.cognitoAuthorizer}                            
