@@ -8,15 +8,17 @@ import { AuthGuardService } from '../core/auth-guard.service';
 import { TokenInterceptor } from '../core/token-interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
+export function getToken () {
+  return localStorage.getItem('CognitoIdentityServiceProvider.ocuosoj46qe7ami0b5pjp4ian.petark.idToken');
+}
+
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return localStorage.getItem('CognitoIdentityServiceProvider.ocuosoj46qe7ami0b5pjp4ian.petark.idToken');
-        },
+        tokenGetter: getToken,
         whitelistedDomains: ['localhost:4200']
       }
     })
