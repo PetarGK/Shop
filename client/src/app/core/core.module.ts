@@ -19,7 +19,7 @@ export function getToken () {
     JwtModule.forRoot({
       config: {
         tokenGetter: getToken,
-        whitelistedDomains: ['localhost:4200']
+        whitelistedDomains: ['localhost:4200', 'petargk.s3-website-us-east-1.amazonaws.com']
       }
     })
   ],
